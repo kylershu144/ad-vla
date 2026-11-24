@@ -1,0 +1,6 @@
+models/
+datasets/
+*.ckpt
+*.safetensors
+.venv/
+__pycache__/

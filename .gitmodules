@@ -1,0 +1,3 @@
+[submodule "AutoVLA"]
+	path = AutoVLA
+	url = https://github.com/ucla-mobility/AutoVLA.git
