@@ -1,4 +1,3 @@
-::: titlepage
 **Evaluating Uncertainty Quantification and Failure Detection\
 for Adversarial Vision Attacks on Autonomous Driving VLAs**
 
@@ -10,8 +9,6 @@ CS 283 -- Governing Artificial Intelligence: Law, Policy, and
 Institutions
 
 Fall 2026
-
-:::
 
 # Finalized Research Question
 
@@ -107,9 +104,7 @@ VLA models are generally inaccessible, that work estimates them with
 Simultaneous Perturbation Stochastic Approximation (SPSA) and requires
 only training data. Since the patch must exist as an object in the
 vehicle's environment, I must additionally enforce invariance to scale,
-rotation, and translation. I will optimize on the nuPlan dataset
-[@caesar2021nuplan], which is used in training many driving VLAs,
-including AutoVLA.
+rotation, and translation. I will optimize in closed loop in CARLA. The original paper runs on a very large GPU (NVIDIA A100 80G) for a week, so to reduce compute I may experiment with optimizing DCT coefficients instead of a 128x128 patch, or use a smaller patch. 
 
 **Method 2: embedding-disruption patch.** Following the Embedding
 Disruption Patch Attack (EDPA) [@xu2025edpa], I maximize the discrepancy
@@ -119,7 +114,7 @@ model-agnostic: it instead uses the vision and language encoder
 embeddings but not full access to model parameters, unlike earlier
 patches whose action-discrepancy and geometry-aware objectives require
 gradients through the whole model [@wang2025adversarial]. The encoders
-should be publicly available for AutoVLA.
+should be publicly available for AutoVLA. A limitation of this method is that the embedding discrepancy is only a proxy for poor VLA behavior, which may not necessary result from a affected internal state.
 
 ## UQ/FD Techniques
 
